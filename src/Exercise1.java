@@ -45,7 +45,7 @@ public class Exercise1 {
         }
     }
 
-    // Test
+
     public static void main(String[] args) {
         // Constructing a binary tree
         TreeNode root = new TreeNode(1);
