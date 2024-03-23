@@ -1,4 +1,4 @@
-// Assuming TreeNode class is defined in another class
+
 
 public class Exercise1 {
 
@@ -18,7 +18,6 @@ public class Exercise1 {
         }
     }
 
-    // Inorder Next
     public static TreeNode inorderNext(TreeNode node) {
         if (node.right != null) {
             node = node.right;
@@ -66,7 +65,7 @@ public class Exercise1 {
         root.right.right.parent = root.right;
 
         // Test preorderNext
-        System.out.println("Preorder traversal:");
+        System.out.println("Preorder traversal");
         TreeNode current = root;
         while (current != null) {
             System.out.println(current.val);
@@ -74,7 +73,7 @@ public class Exercise1 {
         }
 
         // Test inorderNext
-        System.out.println("\nInorder traversal:");
+        System.out.println("Inorder traversal");
         current = root;
         while (current != null) {
             System.out.println(current.val);
@@ -82,7 +81,7 @@ public class Exercise1 {
         }
 
         // Test postorderNext
-        System.out.println("\nPostorder traversal:");
+        System.out.println("Postorder traversal");
         current = root;
         while (current != null) {
             System.out.println(current.val);

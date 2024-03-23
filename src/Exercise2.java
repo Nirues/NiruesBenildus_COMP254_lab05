@@ -1,46 +1,37 @@
-import java.util.ArrayList;
-import java.util.Comparator;
 
-public class Exercise2<K, V> {
-    private ArrayList<Entry<K, V>> heap;
-    private Comparator<K> comparator;
-
-    public Exercise2(Comparator<K> comp) {
-        heap = new ArrayList<>();
-        comparator = comp;
+public class Exercise2 {
+    public static int computeHeight(TreeNode node) {
+        if (node == null)
+            return 0;
+        int leftHeight = computeHeight(node.left);
+        int rightHeight = computeHeight(node.right);
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    private static class Entry<K, V> {
-        K key;
-        V value;
 
-        public Entry(K k, V v) {
-            key = k;
-            value = v;
-        }
+    public static void printElementAndHeight(TreeNode node) {
+        if (node == null)
+            return;
+        int height = computeHeight(node);
+        System.out.println("Element: " + node.val + ", Height: " + height);
+        printElementAndHeight(node.left);
+        printElementAndHeight(node.right);
     }
 
-    public void upheap(int j) {
-        if (j > 0) {
-            int parent = parent(j);
-            if (compare(heap.get(j).key, heap.get(parent).key) < 0) {
-                swap(j, parent);
-                upheap(parent);
-            }
-        }
-    }
+    // Test
+    public static void main(String[] args) {
+        // Constructing a binary tree
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
-    private int parent(int j) {
-        return (j - 1) / 2;
-    }
 
-    private int compare(K a, K b) {
-        return comparator.compare(a, b);
-    }
-
-    private void swap(int i, int j) {
-        Entry<K, V> temp = heap.get(i);
-        heap.set(i, heap.get(j));
-        heap.set(j, temp);
+        printElementAndHeight(root);
     }
 }
+
+
